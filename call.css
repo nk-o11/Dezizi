@@ -3,10 +3,15 @@ body{
     background:#ffffff;
     margin:0;
     overflow: hidden;
+    /* safe area for notch/home bar */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .callWrapper{
-    min-height:100vh;
+    min-height: 100svh;
 
     display:flex;
     flex-direction:column;
@@ -22,27 +27,30 @@ body{
     width: 90vw;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .topBtn{
-    width: auto;
-    min-width: 100px;
-    height: 100px;
-    border-radius: 50%; /* 丸 */
+    width: clamp(50px, 13vw, 100px);
+    height: clamp(50px, 13vw, 100px);
+    border-radius: 50%;
     background-color: #fff;
     color: #000;
     border: 2px solid #000;
-    font-size: 50px;
+    font-size: clamp(1.2rem, 6vw, 3.125rem);
     font-weight: bold;
     cursor: pointer;
+    flex-shrink: 0;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .topArea h1{
-    font-size: 70px;
+    font-size: clamp(1.5rem, 9vw, 4.375rem);
     margin: 0;
 }
 
@@ -67,13 +75,15 @@ body{
 }
 
 .search-form-6::before {
-    width: 100px;
-    height: 50px;
+    width: clamp(30px, 10vw, 100px);
+    height: clamp(25px, 6vw, 50px);
     margin: 10px;
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
     content: '';
+    flex-shrink: 0;
 }
 
 .search-form-6 input {
@@ -82,6 +92,7 @@ body{
     border: none;
     box-sizing: border-box;
     outline: none;
+    font-size: clamp(1rem, 4vw, 1.5rem);
 }
 
 .userArea{
@@ -94,6 +105,7 @@ body{
 
 .userArea p {
     border-bottom: 2px solid #a5a4a4;
+    margin: 0;
 }
 
 .user{
@@ -101,19 +113,25 @@ body{
     display: flex;
     align-items: center;
     margin-bottom: 2vh;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .user img{
-    width: 200px;
-    height: 200px;
+    width: clamp(50px, 20vw, 200px);
+    height: clamp(50px, 20vw, 200px);
     border-radius: 50%;
-    margin-right: 30px;
+    margin-right: clamp(10px, 4vw, 30px);
+    flex-shrink: 0;
 }
 
 .user h1{
-    font-size: 70px;
+    font-size: clamp(1.2rem, 8vw, 4.375rem);
     margin: 0;
 }
+
+/* ── 正解・不正解・その他の画面 ── */
 
 .correctArea{
     position: absolute;
@@ -132,7 +150,7 @@ body{
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
-    font-size: 60px;
+    font-size: clamp(1.5rem, 8vw, 3.75rem);
 }
 
 .correctNextMessage{
@@ -164,7 +182,7 @@ body{
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
-    font-size: 60px;
+    font-size: clamp(1.5rem, 8vw, 3.75rem);
 }
 
 .owlMessage{
@@ -174,10 +192,12 @@ body{
     transform: translateX(-50%);
     width: 100%;
     display: flex;
+    align-items: center;
 }
 
 .owlMessage img{
-    width: 35vw;
+    width: clamp(80px, 30vw, 35vw);
+    flex-shrink: 0;
 }
 
 .balloon {
@@ -185,23 +205,24 @@ body{
     align-items: center;
     position: relative;
     width: 45vw;
-    height: 8vh;
-    margin-left: 20px;
+    min-height: 5vh;
+    margin-left: clamp(12px, 3vw, 20px);
     padding: .8em 1.2em;
-    border: 10px solid #ff745c;
+    border: clamp(4px, 1.5vw, 10px) solid #ff745c;
     border-radius: 5px;
     background-color: #fff;
     color: #333333;
-    font-size: 45px;
+    font-size: clamp(0.9rem, 4.5vw, 2.8125rem);
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 .balloon::before,
 .balloon::after {
     position: absolute;
-    left: -50px;
-    width: 50px;
-    height: 40px;
+    left: clamp(-25px, -5vw, -50px);
+    width: clamp(20px, 5vw, 50px);
+    height: clamp(16px, 4vw, 40px);
     clip-path: polygon(0 50%, 100% 0, 100% 100%);
     content: '';
 }
@@ -211,7 +232,7 @@ body{
 }
 
 .balloon::after {
-    left: -11px;
+    left: clamp(-6px, -1.2vw, -11px);
     background-color: #fff;
 }
 
@@ -236,8 +257,14 @@ body{
     text-align: center;
 
     color: #000000;
-    font-size: 2rem;
+    font-size: clamp(0.8rem, 4vw, 2rem);
     font-weight: bold;
+}
+
+/* h1はInh1の子要素 */
+.Inh1 h1 {
+    font-size: inherit;
+    margin: 0.2em 0;
 }
 
 .retryMessage{
@@ -273,8 +300,14 @@ body{
     background-color: #b48455;
     color: #fff;
     font-weight: 600;
-    font-size: 3em;
+    font-size: clamp(1rem, 5vw, 3rem);
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
+
+/* ── 孫への電話画面 ── */
 
 .grandchildCall{
     position: absolute;
@@ -291,7 +324,7 @@ body{
     top: 25vh;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50vw;
+    width: clamp(120px, 40vw, 50vw);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -302,7 +335,7 @@ body{
 }
 
 .childInfo h1{
-    font-size: 60px;
+    font-size: clamp(1.2rem, 8vw, 3.75rem);
     margin: 0;
     font-weight: bold;
 }
@@ -315,12 +348,17 @@ body{
     width: 60vw;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .iconBtnArea img{
-    width: 20vw;
+    width: clamp(50px, 16vw, 20vw);
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
+
+/* ── クリア画面 ── */
 
 .callFinish{
     position: absolute;
@@ -337,18 +375,14 @@ body{
     top: 5vh;
     left: 50%;
     transform: translateX(-50%);
-    width: 75vw;
+    width: clamp(150px, 65vw, 75vw);
 }
 
 .hidden{
     display:none;
 }
 
-@media screen and (max-width: 768px){
-
-    .callWrapper{
-        width: 100%;
-        box-sizing: border-box;
-    }
-
+.callWrapper{
+    width: 100%;
+    box-sizing: border-box;
 }

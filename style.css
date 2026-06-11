@@ -216,7 +216,7 @@ body{
 
 .btmBtn {
     position: absolute;
-    bottom: 1%;
+    bottom: 1vh;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -227,8 +227,8 @@ body{
 }
 
 .returnIcon {
-    width: clamp(120px, 50vw, 500px);
-    height: clamp(120px, 50vw, 500px);
+    width: clamp(120px, 35vw, 400px);
+    height: clamp(120px, 35vw, 400px);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
